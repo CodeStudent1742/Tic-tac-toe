@@ -1,7 +1,10 @@
 package com.kodilla.tictactoe;
 
+import com.kodilla.tictactoe.ai.AI;
 import com.kodilla.tictactoe.ui.UserDialogs;
+import com.kodilla.tictactoe.ui.playOption;
 
+import javax.servlet.ServletOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -47,7 +50,7 @@ public class Board {
         }
     }
 
-    public static void play(Board board) {
+    public static void playPlayer(Board board) {
         boolean gameNotEnd = false;
         boolean switcher = false;
         while (!gameNotEnd) {
@@ -72,6 +75,39 @@ public class Board {
             System.out.println(board);
             gameNotEnd = Winner.winnerCheck(board);
             gameNotEnd = gameNotEnd || Winner.draw(board);
+        }
+    }
+
+    public static void playAI(Board board) {
+        boolean gameNotEnd2 = false;
+        boolean switcher2 = false;
+        AI aI = new AI(Field.CIRCLE);
+        while (!gameNotEnd2) {
+
+            if (switcher2 == false) {
+                boolean ok2 = false;
+                while (!ok2) {
+                    System.out.println("Set field for Cross");
+                    Move moveU1 = UserDialogs.getNextMove(Field.CROSS);
+                    ok2 = board.move(moveU1);
+                }
+                switcher2 = true;
+            } else {
+                System.out.println("Computer set field for Circle");
+                aI.aINextMove(board, Field.CIRCLE);
+                switcher2 = false;
+            }
+            System.out.println(board);
+            gameNotEnd2 = Winner.winnerCheck(board);
+            gameNotEnd2 = gameNotEnd2 || Winner.draw(board);
+        }
+    }
+    public static void playSelection(Board board){
+        playOption play =UserDialogs.playSelection();
+        if(play.equals(playOption.PLAYER)){
+            Board.playPlayer(board);
+        }else{
+            Board.playAI(board);
         }
     }
 }
