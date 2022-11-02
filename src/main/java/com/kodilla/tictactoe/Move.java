@@ -1,5 +1,7 @@
 package com.kodilla.tictactoe;
 
+import java.util.Objects;
+
 public class Move {
     private int colm;
     private int rowm;
@@ -21,5 +23,18 @@ public class Move {
 
     public Field getFieldm() {
         return fieldm;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Move move = (Move) o;
+        return colm == move.colm && rowm == move.rowm && fieldm == move.fieldm;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(colm, rowm, fieldm);
     }
 }
