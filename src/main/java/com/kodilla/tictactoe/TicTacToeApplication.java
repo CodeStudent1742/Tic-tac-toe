@@ -8,10 +8,10 @@ import javax.servlet.ServletOutputStream;
 public class TicTacToeApplication {
 
     public static void main(String[] args) {
-
-        Board board = new Board();
+        int boardSize = Board.playSelection();
+        Board board = new Board(boardSize);
         System.out.println(board);
-        Board.playSelection(board);
+        Board.opponentSelection(board);
     }
 
 }

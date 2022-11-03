@@ -4,10 +4,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class BoardRow {
+    private int boardSize;
     List<Field> cols = new ArrayList<>();
 
-    public  BoardRow(){
-        for (int col =0; col < 3; col++){
+    public  BoardRow(int boardSize){
+        this.boardSize = boardSize;
+        for (int col =0; col < boardSize; col++){
             cols.add(Field.NONE);
         }
     }
@@ -16,13 +18,19 @@ public class BoardRow {
         return cols;
     }
 
+    public int getBoardSize() {
+        return boardSize;
+    }
+
     @Override
     public String toString() {
         String s = "|";
-        for( int col = 0; col < 3; col++){
+        for(int col = 0; col < boardSize; col++){
             s += cols.get(col)+ "|";
         }
         s+= "\n";
         return s;
     }
+
+
 }

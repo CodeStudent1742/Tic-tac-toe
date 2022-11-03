@@ -13,8 +13,9 @@ class UserDialogsTest {
         //Given
         Field field = Field.CROSS;
         String input = "11";
+        int boardSize = 3;
         //When
-        Move result = UserDialogs.handleInput(input,field);
+        Move result = UserDialogs.handleInput(input,field,boardSize);
         //Then
         assertEquals(new Move(0,0,Field.CROSS), result);
     }
@@ -24,7 +25,8 @@ class UserDialogsTest {
         //Given
         Field field = Field.CROSS;
         String input = "44";
+        int boardSize = 3;
         //When & Then
-        assertThrows(ForTestException .class, ()->UserDialogs.handleInput(input,field));
+        assertThrows(ForTestException .class, ()->UserDialogs.handleInput(input,field,boardSize));
     }
 }

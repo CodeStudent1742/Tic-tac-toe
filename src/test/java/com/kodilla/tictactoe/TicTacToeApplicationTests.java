@@ -16,7 +16,7 @@ class TicTacToeApplicationTests {
         @Test
         void OWinsInRow() {
             //Given
-            Board board = new Board();
+            Board board = new Board(3);
 
             //When
             board.setField(0,0,Field.CIRCLE);
@@ -31,7 +31,7 @@ class TicTacToeApplicationTests {
         @Test
         void OWinsInColumns() {
             //Given
-            Board board = new Board();
+            Board board = new Board(3);
 
             //When
             board.setField(0,0,Field.CIRCLE);
@@ -45,7 +45,7 @@ class TicTacToeApplicationTests {
         @Test
         void OWinsInDiagonal1() {
             //Given
-            Board board = new Board();
+            Board board = new Board(3);
 
             //When
             board.setField(0,0,Field.CIRCLE);
@@ -60,7 +60,7 @@ class TicTacToeApplicationTests {
         @Test
         void OWinsInDiagonal2() {
             //Given
-            Board board = new Board();
+            Board board = new Board(3);
 
             //When
             board.setField(2,0,Field.CIRCLE);
@@ -78,7 +78,7 @@ class TicTacToeApplicationTests {
         @Test
         void XWinsInRow() {
             //Given
-            Board board = new Board();
+            Board board = new Board(3);
 
             //When
             board.setField(0,0,Field.CROSS);
@@ -93,7 +93,7 @@ class TicTacToeApplicationTests {
         @Test
         void XWinsInColumns() {
             //Given
-            Board board = new Board();
+            Board board = new Board(3);
 
             //When
             board.setField(0,0,Field.CROSS);
@@ -108,7 +108,7 @@ class TicTacToeApplicationTests {
         @Test
         void XWinsInDiagonal1() {
             //Given
-            Board board = new Board();
+            Board board = new Board(3);
 
             //When
             board.setField(0,0,Field.CROSS);
@@ -123,7 +123,7 @@ class TicTacToeApplicationTests {
         @Test
         void XWinsInDiagonal2() {
             //Given
-            Board board = new Board();
+            Board board = new Board(3);
 
             //When
             board.setField(2,0,Field.CROSS);
@@ -138,7 +138,7 @@ class TicTacToeApplicationTests {
     @Test
     void TestDraw() {
         //Given
-        Board board = new Board();
+        Board board = new Board(3);
 
         //When
         board.setField(0,0,Field.CIRCLE);
@@ -158,7 +158,7 @@ class TicTacToeApplicationTests {
     @Test
     void ThrowException() {
         //Given
-        Board board = new Board();
+        Board board = new Board(3);
 
         //When
         board.setField(0,0,Field.CIRCLE);
