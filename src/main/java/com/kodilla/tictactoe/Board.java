@@ -1,9 +1,10 @@
 package com.kodilla.tictactoe;
 
 import com.kodilla.tictactoe.ai.AI;
+import com.kodilla.tictactoe.ui.Level;
 import com.kodilla.tictactoe.ui.UserDialogs;
-import com.kodilla.tictactoe.ui.opponentOption;
-import com.kodilla.tictactoe.ui.playOption;
+import com.kodilla.tictactoe.ui.OpponentOption;
+import com.kodilla.tictactoe.ui.PlayOption;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -108,21 +109,48 @@ public class Board {
         }
     }
     public static void opponentSelection(Board board){
-        opponentOption play =UserDialogs.opponentSelection();
-        if(play.equals(opponentOption.PLAYER)){
+        OpponentOption play =UserDialogs.opponentSelection();
+        if(play.equals(OpponentOption.PLAYER)){
             Board.playPlayer(board);
         }else{
+//            Level level = UserDialogs.setLevel();
+//            Board.playAI(board, level);
             Board.playAI(board);
         }
     }
     public static int playSelection() {
         int bSize;
-        playOption play = UserDialogs.playSelection();
-        if(play == playOption.FIVE){
+        PlayOption play = UserDialogs.playSelection();
+        if(play == PlayOption.FIVE){
            bSize = 10;
         }else{
             bSize = 3;
         }
         return bSize;
+    }
+    public static void playAI(Board board,Level level) {
+        boolean gameNotEnd2 = false;
+        boolean switcher2 = false;
+        Move moveU1 = null;
+        AI aI = new AI(Field.CIRCLE,board.getBoardSize());
+        while (!gameNotEnd2) {
+
+            if (switcher2 == false) {
+                boolean ok2 = false;
+                while (!ok2) {
+                    System.out.println("Set field for Cross");
+                    moveU1 = UserDialogs.getNextMove(Field.CROSS,board.getBoardSize());
+                    ok2 = board.move(moveU1);
+                }
+                switcher2 = true;
+            } else {
+                System.out.println("Computer set field for Circle");
+                aI.aINextMove(board,level,moveU1);
+                switcher2 = false;
+            }
+            System.out.println(board);
+            gameNotEnd2 = Winner.winnerCheck(board);
+            gameNotEnd2 = gameNotEnd2 || Winner.draw(board);
+        }
     }
 }

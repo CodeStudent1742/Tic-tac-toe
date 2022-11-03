@@ -1,5 +1,5 @@
 package com.kodilla.tictactoe.ui;
 
-public enum playOption {
+public enum PlayOption {
     CLASSIC, FIVE;
 }

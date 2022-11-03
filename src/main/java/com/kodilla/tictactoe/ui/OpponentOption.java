@@ -1,6 +1,6 @@
 package com.kodilla.tictactoe.ui;
 
-public enum opponentOption {
+public enum OpponentOption {
 
     COMPUTER,PLAYER;
 

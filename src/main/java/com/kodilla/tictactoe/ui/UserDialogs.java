@@ -41,10 +41,10 @@ public class UserDialogs {
         return move;
     }
 
-    public static opponentOption opponentSelection() {
+    public static OpponentOption opponentSelection() {
         boolean checker = false;
         Scanner scanner = new Scanner(System.in);
-        opponentOption choice = null;
+        OpponentOption choice = null;
         while (!checker) {
             System.out.println("Choose with who you want to play : Computer(C) or 2nd player(P)");
             String getKey = scanner.nextLine();
@@ -52,11 +52,11 @@ public class UserDialogs {
             switch (getKey.toUpperCase()) {
                 case "C":
                     checker = true;
-                    choice = opponentOption.COMPUTER;
+                    choice = OpponentOption.COMPUTER;
                     break;
                 case "P":
                     checker = true;
-                    choice = opponentOption.PLAYER;
+                    choice = OpponentOption.PLAYER;
                     break;
                 default:
                     System.out.println("You inputted wrong key. Try again");
@@ -66,10 +66,10 @@ public class UserDialogs {
         return choice;
     }
 
-    public static playOption playSelection() {
+    public static PlayOption playSelection() {
         boolean checker = false;
         Scanner scanner = new Scanner(System.in);
-        playOption choice2 = null;
+        PlayOption choice2 = null;
         while (!checker) {
             System.out.println("Choose type od Game: Classic(C) or to Five(F)");
             String getKey = scanner.nextLine();
@@ -77,11 +77,11 @@ public class UserDialogs {
             switch (getKey.toUpperCase()) {
                 case "C":
                     checker = true;
-                    choice2 = playOption.CLASSIC;
+                    choice2 = PlayOption.CLASSIC;
                     break;
                 case "F":
                     checker = true;
-                    choice2 = playOption.FIVE;
+                    choice2 = PlayOption.FIVE;
                     break;
                 default:
                     System.out.println("You inputted wrong key. Try again");
@@ -89,5 +89,33 @@ public class UserDialogs {
             }
         }
         return choice2;
+    }
+    public static Level setLevel() {
+        boolean checker = false;
+        Scanner scanner = new Scanner(System.in);
+        Level choice1 = null;
+        while (!checker) {
+            System.out.println("Choose Level ofGame: Easy(E), Normal(N) or Hard(H)");
+            String getKey = scanner.nextLine();
+            getKey = getKey.toUpperCase();
+            switch (getKey.toUpperCase()) {
+                case "E":
+                    checker = true;
+                    choice1 = Level.EASY;
+                    break;
+                case "N":
+                    checker = true;
+                    choice1 = Level.NORMAL;
+                    break;
+                case "H":
+                    checker = true;
+                    choice1 = Level.HARD;
+                    break;
+                default:
+                    System.out.println("You inputted wrong key. Try again");
+                    checker = false;
+            }
+        }
+        return choice1;
     }
 }
