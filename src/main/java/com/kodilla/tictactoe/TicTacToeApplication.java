@@ -13,5 +13,4 @@ public class TicTacToeApplication {
         System.out.println(board);
         Board.opponentSelection(board);
     }
-
 }

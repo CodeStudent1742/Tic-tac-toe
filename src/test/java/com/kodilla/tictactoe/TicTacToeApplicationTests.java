@@ -22,7 +22,7 @@ class TicTacToeApplicationTests {
             board.setField(0,0,Field.CIRCLE);
             board.setField(1,0,Field.CIRCLE);
             board.setField(2,0,Field.CIRCLE);
-            boolean result = Winner.check(board,Field.CIRCLE);
+            boolean result = Winner.check(board,Field.CIRCLE,false);
 
             //Then
             Assertions.assertTrue(result);
@@ -37,7 +37,7 @@ class TicTacToeApplicationTests {
             board.setField(0,0,Field.CIRCLE);
             board.setField(0,1,Field.CIRCLE);
             board.setField(0,2,Field.CIRCLE);
-            boolean result = Winner.check(board,Field.CIRCLE);
+            boolean result = Winner.check(board,Field.CIRCLE,false);
 
             //Then
             Assertions.assertTrue(result);
@@ -51,7 +51,7 @@ class TicTacToeApplicationTests {
             board.setField(0,0,Field.CIRCLE);
             board.setField(1,1,Field.CIRCLE);
             board.setField(2,2,Field.CIRCLE);
-            boolean result = Winner.check(board,Field.CIRCLE);
+            boolean result = Winner.check(board,Field.CIRCLE,false);
 
             //Then
             Assertions.assertTrue(result);
@@ -66,7 +66,7 @@ class TicTacToeApplicationTests {
             board.setField(2,0,Field.CIRCLE);
             board.setField(1,1,Field.CIRCLE);
             board.setField(0,2,Field.CIRCLE);
-            boolean result = Winner.check(board,Field.CIRCLE);
+            boolean result = Winner.check(board,Field.CIRCLE,false);
 
             //Then
             Assertions.assertTrue(result);
@@ -84,7 +84,7 @@ class TicTacToeApplicationTests {
             board.setField(0,0,Field.CROSS);
             board.setField(1,0,Field.CROSS);
             board.setField(2,0,Field.CROSS);
-            boolean result = Winner.check(board,Field.CROSS);
+            boolean result = Winner.check(board,Field.CROSS,false);
 
             //Then
             Assertions.assertTrue(result);
@@ -99,7 +99,7 @@ class TicTacToeApplicationTests {
             board.setField(0,0,Field.CROSS);
             board.setField(0,1,Field.CROSS);
             board.setField(0,2,Field.CROSS);
-            boolean result = Winner.check(board,Field.CROSS);
+            boolean result = Winner.check(board,Field.CROSS,false);
 
             //Then
             Assertions.assertTrue(result);
@@ -114,7 +114,7 @@ class TicTacToeApplicationTests {
             board.setField(0,0,Field.CROSS);
             board.setField(1,1,Field.CROSS);
             board.setField(2,2,Field.CROSS);
-            boolean result = Winner.check(board,Field.CROSS);
+            boolean result = Winner.check(board,Field.CROSS,false);
 
             //Then
             Assertions.assertTrue(result);
@@ -129,7 +129,7 @@ class TicTacToeApplicationTests {
             board.setField(2,0,Field.CROSS);
             board.setField(1,1,Field.CROSS);
             board.setField(0,2,Field.CROSS);
-            boolean result = Winner.check(board,Field.CROSS);
+            boolean result = Winner.check(board,Field.CROSS,false);
 
             //Then
             Assertions.assertTrue(result);
@@ -150,7 +150,7 @@ class TicTacToeApplicationTests {
         board.setField(0,2,Field.CIRCLE);
         board.setField(1,2,Field.CROSS);
         board.setField(1,0,Field.CIRCLE);
-        boolean result = Winner.draw(board);
+        boolean result = Winner.draw(board,false);
 
         //Then
         Assertions.assertTrue(result);
@@ -163,7 +163,7 @@ class TicTacToeApplicationTests {
         //When
         board.setField(0,0,Field.CIRCLE);
         board.setField(1,1,Field.CROSS);
-        boolean result = Winner.draw(board);
+        boolean result = Winner.draw(board,false);
 
         //Then
         Assertions.assertTrue(result);

@@ -73,28 +73,28 @@ public class Board {
                 boolean ok = false;
                 while (!ok) {
                     System.out.println("Set field for Circle");
-                    Move move2 = UserDialogs.getNextMove(Field.CIRCLE,board.getBoardSize());
+                    Move move2 = UserDialogs.getNextMove(Field.CIRCLE, board.getBoardSize());
                     ok = board.move(move2);
                 }
                 switcher = false;
             }
             System.out.println(board);
             gameNotEnd = Winner.winnerCheck(board);
-            gameNotEnd = gameNotEnd || Winner.draw(board);
+            gameNotEnd = gameNotEnd || Winner.draw(board,true);
         }
     }
 
     public static void playAI(Board board) {
         boolean gameNotEnd2 = false;
         boolean switcher2 = false;
-        AI aI = new AI(Field.CIRCLE,board.getBoardSize());
+        AI aI = new AI(Field.CIRCLE, board.getBoardSize());
         while (!gameNotEnd2) {
 
             if (switcher2 == false) {
                 boolean ok2 = false;
                 while (!ok2) {
                     System.out.println("Set field for Cross");
-                    Move moveU1 = UserDialogs.getNextMove(Field.CROSS,board.getBoardSize());
+                    Move moveU1 = UserDialogs.getNextMove(Field.CROSS, board.getBoardSize());
                     ok2 = board.move(moveU1);
                 }
                 switcher2 = true;
@@ -105,52 +105,55 @@ public class Board {
             }
             System.out.println(board);
             gameNotEnd2 = Winner.winnerCheck(board);
-            gameNotEnd2 = gameNotEnd2 || Winner.draw(board);
+            gameNotEnd2 = gameNotEnd2 || Winner.draw(board,true);
         }
     }
-    public static void opponentSelection(Board board){
-        OpponentOption play =UserDialogs.opponentSelection();
-        if(play.equals(OpponentOption.PLAYER)){
+
+    public static void opponentSelection(Board board) {
+        OpponentOption play = UserDialogs.opponentSelection();
+        if (play.equals(OpponentOption.PLAYER)) {
             Board.playPlayer(board);
-        }else{
-//            Level level = UserDialogs.setLevel();
-//            Board.playAI(board, level);
-            Board.playAI(board);
+        } else {
+            Level level = UserDialogs.setLevel(board.getBoardSize());
+            Board.playAI(board, level);
+//            Board.playAI(board);
         }
     }
+
     public static int playSelection() {
         int bSize;
         PlayOption play = UserDialogs.playSelection();
-        if(play == PlayOption.FIVE){
-           bSize = 10;
-        }else{
+        if (play == PlayOption.FIVE) {
+            bSize = 10;
+        } else {
             bSize = 3;
         }
         return bSize;
     }
-    public static void playAI(Board board,Level level) {
+
+    public static void playAI(Board board, Level level) {
         boolean gameNotEnd2 = false;
         boolean switcher2 = false;
         Move moveU1 = null;
-        AI aI = new AI(Field.CIRCLE,board.getBoardSize());
+        AI aI = new AI(Field.CIRCLE, board.getBoardSize());
         while (!gameNotEnd2) {
 
             if (switcher2 == false) {
                 boolean ok2 = false;
                 while (!ok2) {
                     System.out.println("Set field for Cross");
-                    moveU1 = UserDialogs.getNextMove(Field.CROSS,board.getBoardSize());
+                    moveU1 = UserDialogs.getNextMove(Field.CROSS, board.getBoardSize());
                     ok2 = board.move(moveU1);
                 }
                 switcher2 = true;
             } else {
                 System.out.println("Computer set field for Circle");
-                aI.aINextMove(board,level,moveU1);
+                aI.aINextMove(board, level, moveU1);
                 switcher2 = false;
             }
             System.out.println(board);
             gameNotEnd2 = Winner.winnerCheck(board);
-            gameNotEnd2 = gameNotEnd2 || Winner.draw(board);
+            gameNotEnd2 = gameNotEnd2 || Winner.draw(board,true);
         }
     }
 }

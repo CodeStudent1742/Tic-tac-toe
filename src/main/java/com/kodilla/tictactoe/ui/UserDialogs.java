@@ -90,30 +90,57 @@ public class UserDialogs {
         }
         return choice2;
     }
-    public static Level setLevel() {
+
+    public static Level setLevel(int boardSize) {
         boolean checker = false;
         Scanner scanner = new Scanner(System.in);
         Level choice1 = null;
-        while (!checker) {
-            System.out.println("Choose Level ofGame: Easy(E), Normal(N) or Hard(H)");
-            String getKey = scanner.nextLine();
-            getKey = getKey.toUpperCase();
-            switch (getKey.toUpperCase()) {
-                case "E":
-                    checker = true;
-                    choice1 = Level.EASY;
-                    break;
-                case "N":
-                    checker = true;
-                    choice1 = Level.NORMAL;
-                    break;
-                case "H":
-                    checker = true;
-                    choice1 = Level.HARD;
-                    break;
-                default:
-                    System.out.println("You inputted wrong key. Try again");
-                    checker = false;
+        if (boardSize == 3) {
+            while (!checker) {
+                System.out.println("Choose Level ofGame: Easy(E), NextToMe(N) or Hard(H)");
+                String getKey = scanner.nextLine();
+                getKey = getKey.toUpperCase();
+                switch (getKey.toUpperCase()) {
+                    case "E":
+                        checker = true;
+                        choice1 = Level.EASY;
+                        break;
+                    case "N":
+                        checker = true;
+                        choice1 = Level.NORMAL;
+                        break;
+                    case "H":
+                        checker = true;
+                        choice1 = Level.HARD;
+                        break;
+                    default:
+                        System.out.println("You inputted wrong key. Try again");
+                        checker = false;
+                }
+            }
+
+        } else {
+            while (!checker) {
+                System.out.println("Choose Level ofGame: Easy(E), NextToMe(N) ");
+                String getKey = scanner.nextLine();
+                getKey = getKey.toUpperCase();
+                switch (getKey.toUpperCase()) {
+                    case "E":
+                        checker = true;
+                        choice1 = Level.EASY;
+                        break;
+                    case "N":
+                        checker = true;
+                        choice1 = Level.NORMAL;
+                        break;
+//                    case "H":
+//                        checker = true;
+//                        choice1 = Level.HARD;
+//                        break;
+                    default:
+                        System.out.println("You inputted wrong key. Try again");
+                        checker = false;
+                }
             }
         }
         return choice1;

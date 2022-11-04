@@ -7,71 +7,83 @@ public class Winner {
     public static boolean winnerCheck(Board board) {
         boolean result = false;
 
-        result = Winner.check(board, Field.CIRCLE) || Winner.check(board, Field.CROSS);
+        result = Winner.check(board, Field.CIRCLE,true) || Winner.check(board, Field.CROSS,true);
         return result;
     }
 
-    public static boolean check(Board board, Field field) {
+    public static boolean check(Board board, Field field,boolean print) {
         boolean result = false;
         if (board.getBoardSize() == 3) {
-            result = Winner.check3(board, field);
+            result = Winner.check3(board, field,print);
         } else {
-            result = Winner.check5(board, field);
+            result = Winner.check5(board, field,print);
         }
         return result;
     }
 
-    public static boolean draw(Board board) {
+    public static boolean draw(Board board, boolean print) {
         boolean result = false;
         List<Field> theResult = board.getRows().stream()
                 .flatMap(s -> s.getCols().stream())
                 .collect(Collectors.toList());
         result = !theResult.contains(Field.NONE);
-        if (result)
+        if (result && print)
             System.out.println("DRAW!");
         return result;
     }
 
-    public static boolean check3(Board board, Field field) {
+    public static boolean check3(Board board, Field field, boolean print) {
         boolean result = false;
         for (int i = 0; i < 3; i++) {
             //Check Rows
             if (board.getField(0, i) == field && board.getField(1, i) == field && board.getField(2, i) == field) {
-                System.out.println("Winner is player playing: " + field);
                 result = true;
+                if(print){
+                    System.out.println("Winner is player playing: " + field);
+                }
             }
             //Check Columns
             if (board.getField(i, 0) == field && board.getField(i, 1) == field && board.getField(i, 2) == field) {
-                System.out.println("Winner is player playing: " + field);
+                if(print){
+                    System.out.println("Winner is player playing: " + field);
+                }
                 result = true;
             }
         }
         //Check \
         if (board.getField(0, 0) == field && board.getField(1, 1) == field && board.getField(2, 2) == field) {
-            System.out.println("Winner is player playing: " + field);
+            if(print){
+                System.out.println("Winner is player playing: " + field);
+            }
             result = true;
         }
         //Check /
         if (board.getField(2, 0) == field && board.getField(1, 1) == field && board.getField(0, 2) == field) {
-            System.out.println("Winner is player playing: " + field);
+            if(print) {
+                System.out.println("Winner is player playing: " + field);
+            }
             result = true;
 
         }
         return result;
     }
 
-    public static boolean check5(Board board, Field field) {
+    public static boolean check5(Board board, Field field,boolean print) {
         boolean result = false;
         for (int i = 0; i < board.getBoardSize(); i++) {
             for (int j = 0; j < board.getBoardSize() - 5; j++) {
                 //Check Rows
                 if (board.getField(j, i) == field && board.getField(j + 1, i) == field && board.getField(j + 2, i) == field && board.getField(j + 3, i) == field && board.getField(j + 4, i) == field) {
-                    System.out.println("Winner is player playing: " + field);
+                    if(print){
+                        System.out.println("Winner is player playing: " + field);
+                    }
                     result = true;
                 }
                 //Check Columns
                 if (board.getField(i, j) == field && board.getField(i, j + 1) == field && board.getField(i, j + 2) == field && board.getField(i, j + 3) == field && board.getField(i, j + 4) == field) {
-                    System.out.println("Winner is player playing: " + field);
+                    if(print) {
+                        System.out.println("Winner is player playing: " + field);
+                    }
                     result = true;
                 }
             }
@@ -80,12 +92,16 @@ public class Winner {
             for (int j = 0; j < board.getBoardSize() - 4; j++) {
                 //Check /
                 if (board.getField(i + 4, j) == field && board.getField(i + 3, j + 1) == field && board.getField(i + 2, j + 2) == field && board.getField(i + 1, j + 3) == field && board.getField(i, j + 4) == field) {
-                    System.out.println("Winner is player playing: " + field);
+                    if(print){
+                        System.out.println("Winner is player playing: " + field);
+                    }
                     result = true;
                 }
                 //Check \
                 if (board.getField(i, j) == field && board.getField(i + 1, j + 1) == field && board.getField(i + 2, j + 2) == field && board.getField(i + 3, j + 3) == field && board.getField(i + 4, j + 4) == field) {
-                    System.out.println("Winner is player playing: " + field);
+                    if(print) {
+                        System.out.println("Winner is player playing: " + field);
+                    }
                     result = true;
                 }
             }
